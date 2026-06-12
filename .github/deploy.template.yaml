@@ -1,0 +1,14 @@
+spec:
+  name: do-deploy-practice-frontend
+  region: sfo3
+  static_sites:
+    - name: frontend
+      source_dir: front-end
+      github:
+        repo: yifeng2019uwb/DODeploy-practice
+        branch: main
+        deploy_on_push: true
+      build_command: npm install && npm run build
+      output_dir: dist
+      routes:
+        - path: /
