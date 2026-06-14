@@ -44,6 +44,7 @@ public class EventServiceImp implements EventService{
                 e.getMetadata()
             )).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Event not found"));
         } catch (Exception e) {
+            System.out.println("getEventById error: " + e.getMessage());
             throw new ValidationException("Error occurred while fetching event");
         }
     }
@@ -57,6 +58,7 @@ public class EventServiceImp implements EventService{
             Event savedEvent = eventDao.save(event);
             return new CreateEventResponse(savedEvent.getId());
         } catch (Exception e) {
+            System.out.println("createEvent error: " + e.getMessage());
             throw new ValidationException("Error occurred while creating event");
         }
 
@@ -68,6 +70,8 @@ public class EventServiceImp implements EventService{
             List<Event> events = eventDao.findEventsByCustomerIdAndTimestampBetween(query.customer_id(), query.start_time(), query.end_time());
             return new EventSummaryResponse(query.customer_id(), events.size(), getSummaryOfEvent(events));
         } catch (Exception e) {
+            System.out.println("getSummary error: " + e.getMessage());
+
             throw new ValidationException("Error occurred while fetching events");
         }
     }
@@ -79,6 +83,7 @@ public class EventServiceImp implements EventService{
             List<Event> events = eventDao.findTopEventsByCustomerId(customerId, limit);
             return new TopEventsResponse(getItemsFromMap(getSummaryOfEvent(events)));
         } catch (Exception e) {
+            System.out.println("getTopEvents error: " + e.getMessage());
             throw new ValidationException("Error occurred while fetching top events");
         }
     }
