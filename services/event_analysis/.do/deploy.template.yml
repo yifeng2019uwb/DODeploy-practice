@@ -1,0 +1,13 @@
+name: event-analysis
+services:
+  - name: event-analysis
+    image:
+      registry_type: DOCR
+      registry: app-images
+      repository: event-analysis
+      tag: latest
+    http_port: 8080
+    instance_size_slug: apps-s-1vcpu-0.5gb
+    instance_count: 1
+    health_check:
+      http_path: /actuator/health
