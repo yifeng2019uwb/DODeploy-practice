@@ -6,7 +6,7 @@ import io.micrometer.core.annotation.TimedSet;
 
 @DisplayName("Event Endpoint")
 public class eventServiceTest {
-    private static final String endpoint = "";
+    private static final String endpoint = "http://goldfish-app-ligib.ondigitalocean.app";
     private static final String basePath = "/api/v1/events";
 
     private static final String customer_id1 = UUID.randomUUID();

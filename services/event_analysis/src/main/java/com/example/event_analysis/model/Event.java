@@ -31,7 +31,7 @@ public class Event {
     @Column(name = "type")
     private String type;
 
-    @Column(name = "timestamps")
+    @Column(name = "timestamp")
     private LocalDate timestamp;
 
     @JdbcTypeCode(SqlTypes.JSON)
