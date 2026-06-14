@@ -38,6 +38,8 @@ public class Event {
     @Column(name = "metadata")
     private Map<String, String> metadata;
 
+    @SuppressWarnings("suppress_unused")
+    protected Event() {}
 
     public Event(UUID event_id, UUID customerId, String type, LocalDate timestamp, Map<String, String> metadata) {
         this.id = event_id;
